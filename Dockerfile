@@ -24,6 +24,7 @@ RUN sh -c 'add-apt-repository \
 
 RUN apt-get update
 
+RUN groupadd -g $DOCKER_GID docker
 RUN apt-get -y install docker-ce docker-ce-cli containerd.io
 
 RUN apt-get clean
