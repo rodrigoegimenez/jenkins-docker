@@ -12,7 +12,8 @@ RUN apt-get -y install \
     ca-certificates \
     curl \
     gnupg-agent \
-    software-properties-common
+    software-properties-common \
+    sudo
 
 COPY docker.gpg .
 RUN apt-key add docker.gpg
@@ -46,4 +47,4 @@ USER jenkins
 
 # Run our entrypoint to first change docker.sock group and
 # then start jenkins
-ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "/entrypoint.sh"]
